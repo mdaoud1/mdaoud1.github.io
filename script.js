@@ -58,4 +58,3 @@ document.querySelectorAll('.project-card, .skill-category').forEach(el => {
 
 // Mobile menu toggle (if needed in future)
 // This is a placeholder for potential mobile menu functionality
-console.log('Personal Portfolio Website Loaded Successfully!');

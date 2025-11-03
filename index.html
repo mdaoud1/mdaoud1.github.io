@@ -110,6 +110,24 @@
       <div id="projectGrid" class="grid cols-3" aria-live="polite"></div>
     </section>
 
+    <section id="project-detail" hidden>
+      <div class="card">
+        <button id="backToProjects" class="btn">← Back to Projects</button>
+        <h2 id="pd-title" style="margin-top:12px"></h2>
+        <div id="pd-tags" class="list" style="margin:8px 0 14px"></div>
+        <img id="pd-hero" class="proj-img" alt="Project image" src="" />
+        <h3 style="margin-top:18px">Overview</h3>
+        <p id="pd-overview" class="muted"></p>
+        <h3 style="margin-top:18px">Tech Stack</h3>
+        <div id="pd-stack" class="list"></div>
+        <h3 style="margin-top:18px">Highlights</h3>
+        <ul id="pd-bullets"></ul>
+        <h3 style="margin-top:18px">Links</h3>
+        <div id="pd-links" class="list"></div>
+        <div id="pd-gallery" class="grid cols-2" style="margin-top:18px"></div>
+      </div>
+    </section>
+
 
     <section id="experience">
       <h2>Experience</h2>
@@ -177,14 +195,37 @@
   const projects = [
     {
       title: 'DrinkSync — Smart Hydration',
+      slug: 'drinksync',
       blurb: 'Weight-sensor hydration tracker with BLE and embedded C/C++; PCB and low-power design.',
       href: '#',
       img: 'https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1600&auto=format&fit=crop',
       tags: ['Embedded', 'BLE', 'C/C++'],
-      type: 'hardware'
+      type: 'hardware',
+      details: {
+        overview: 'DrinkSync is a smart hydration tracking system that automatically logs water intake using a load cell and BLE. It emphasizes accuracy, low-power operation, and manufacturability with cohesive hardware, firmware, and app integration.',
+        stack: ['C/C++ (embedded)', 'BLE', 'ESP32', 'HX711', 'KiCad', 'LTSpice', 'MATLAB', 'Swift'],
+        bullets: [
+          'Designed a 2-layer PCB with analog signal conditioning and 3.3 V regulated power.',
+          'Implemented firmware for calibration, averaging, and BLE characteristic updates.',
+          'Created a custom BLE service for real-time hydration data to the iOS app.',
+          'Validated signals and filters with LTSpice and MATLAB; optimized low-power modes.'
+        ],
+        links: [
+          { label: 'GitHub', href: 'https://github.com/mdaoud1/DrinkSync' },
+          { label: 'Demo Video', href: 'https://youtu.be/example' },
+          { label: 'PCB Files', href: 'https://github.com/mdaoud1/DrinkSync/tree/main/hardware' }
+        ],
+        gallery: [
+          'assets/drinksync/cover.jpg',
+          'assets/drinksync/pcb.jpg',
+          'assets/drinksync/app.jpg',
+          'assets/drinksync/setup.jpg'
+        ]
+      },
     },
     {
       title: 'Smart Dice on Zybo Z7',
+      slug: 'smart-dice',
       blurb: 'FPGA game with PMOD joystick input and VGA output @1600x900; VHDL modules and SSD driver.',
       href: '#',
       img: 'https://images.unsplash.com/photo-1517059224940-d4af9eec41e5?q=80&w=1600&auto=format&fit=crop',
@@ -193,6 +234,7 @@
     },
     {
       title: 'AquaMate iOS Companion',
+      slug: 'aquamate-ios',
       blurb: 'Swift app prototype for BLE sync, reminders, and hydration analytics with CoreBluetooth.',
       href: '#',
       img: 'https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1600&auto=format&fit=crop',
@@ -201,6 +243,7 @@
     },
     {
       title: 'PostgreSQL Stock Loader',
+      slug: 'postgres-stock-loader',
       blurb: 'Python + yfinance ETL to Postgres with simple dashboard; basis for data engineering portfolio.',
       href: '#',
       img: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1600&auto=format&fit=crop',
@@ -209,6 +252,7 @@
     },
     {
       title: 'WhiskerBot',
+      slug: 'whiskerbot',
       blurb: 'Tactile-sensing robot using PWM-driven DC motors, L298N drivers, and 3D-printed chassis.',
       href: '#',
       img: 'https://images.unsplash.com/photo-1505744766763-73eb8d6e35d5?q=80&w=1600&auto=format&fit=crop',
@@ -217,6 +261,7 @@
     },
     {
       title: 'CalTrak — Calorie Tracker',
+      slug: 'caltrak',
       blurb: 'Node/Express + MongoDB backend with JWT auth; simple HTML front end for demo.',
       href: '#',
       img: 'https://images.unsplash.com/photo-1557800636-894a64c1696f?q=80&w=1600&auto=format&fit=crop',
@@ -227,6 +272,50 @@
 
   // --- Renderers
   const grid = document.getElementById('projectGrid');
+  const detailSection = document.getElementById('project-detail');
+  const pdTitle = document.getElementById('pd-title');
+  const pdTags = document.getElementById('pd-tags');
+  const pdHero = document.getElementById('pd-hero');
+  const pdOverview = document.getElementById('pd-overview');
+  const pdStack = document.getElementById('pd-stack');
+  const pdBullets = document.getElementById('pd-bullets');
+  const pdLinks = document.getElementById('pd-links');
+  const pdGallery = document.getElementById('pd-gallery');
+
+  function tagChip(txt){ return `<span class="tag">${txt}</span>`; }
+
+  function showList(){
+    document.getElementById('projects').hidden = false;
+    detailSection.hidden = true;
+    // restore title
+    document.title = 'Mohammad Daoud — Portfolio';
+  }
+
+  function showDetail(pr){
+    // hide list
+    document.getElementById('projects').hidden = true;
+    detailSection.hidden = false;
+
+    // populate
+    pdTitle.textContent = pr.title;
+    pdTags.innerHTML = pr.tags.map(tagChip).join('');
+    pdHero.src = pr.img;
+    pdHero.alt = pr.title;
+
+    if(pr.details && pr.details.overview){ pdOverview.textContent = pr.details.overview; }
+    else { pdOverview.textContent = pr.blurb || ''; }
+
+    pdStack.innerHTML = (pr.details?.stack || pr.tags || []).map(tagChip).join('');
+
+    pdBullets.innerHTML = (pr.details?.bullets || []).map(b=>`<li>${b}</li>`).join('');
+
+    pdLinks.innerHTML = (pr.details?.links || []).map(l=>`<a class="btn" href="${l.href}" target="_blank" rel="noopener noreferrer">${l.label}</a>`).join('');
+
+    pdGallery.innerHTML = (pr.details?.gallery || []).map(src=>`<img class="proj-img" loading="lazy" alt="${pr.title} asset" src="${src}">`).join('');
+
+    // update title
+    document.title = pr.title + ' — Project';
+  }
 
   function projectCard(p){
     return `
@@ -235,7 +324,7 @@
         <h3>${p.title}</h3>
         <p class="muted">${p.blurb}</p>
         <div class="list">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
-        <p><a class="btn" href="${p.href}">Details</a></p>
+        <p><a class="btn" href="?id=${p.slug}">Details</a></p>
       </article>
     `;
   }
@@ -246,6 +335,27 @@
       .map(projectCard).join('');
   }
   render();
+
+  // --- Details routing via ?id=slug
+  function getProjectBySlug(slug){ return projects.find(p=>p.slug===slug); }
+  const params = new URLSearchParams(location.search);
+  const qid = params.get('id');
+  if(qid){
+    const pr = getProjectBySlug(qid);
+    if(pr){ showDetail(pr); }
+  }
+  document.getElementById('backToProjects').addEventListener('click', () => {
+    history.pushState({}, '', location.pathname);
+    showList();
+  });
+  window.addEventListener('popstate', () => {
+    const sp = new URLSearchParams(location.search);
+    const sid = sp.get('id');
+    if(!sid){ showList(); } else {
+      const pr = getProjectBySlug(sid);
+      if(pr){ showDetail(pr); }
+    }
+  });
 
   // --- Tabs
   document.querySelectorAll('.toolbar .tab').forEach(btn => {

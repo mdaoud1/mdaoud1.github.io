@@ -297,6 +297,7 @@
   const pdBullets = document.getElementById('pd-bullets');
   const pdLinks = document.getElementById('pd-links');
   const pdGallery = document.getElementById('pd-gallery');
+  let scrollPosBeforeOverlay = null;
 
   function tagChip(txt){ return `<span class="tag">${txt}</span>`; }
 
@@ -305,11 +306,22 @@
     detailSection.hidden = true;
     detailSection.classList.remove('open');
     document.body.classList.remove('no-scroll');
+    // restore scroll position if we opened from the list
+    if (scrollPosBeforeOverlay !== null) {
+      const rootEl = document.documentElement;
+      const prev = rootEl.style.scrollBehavior;
+      rootEl.style.scrollBehavior = 'auto';
+      window.scrollTo(0, scrollPosBeforeOverlay);
+      rootEl.style.scrollBehavior = prev;
+      scrollPosBeforeOverlay = null;
+    }
     document.title = 'Mohammad Daoud — Portfolio';
   }
 
   function showDetail(pr){
     // open overlay (do not hide projects list)
+    // remember current scroll position before locking body
+    scrollPosBeforeOverlay = window.scrollY;
     detailSection.hidden = false;
     detailSection.classList.add('open');
     document.body.classList.add('no-scroll');
@@ -353,6 +365,22 @@
       .map(projectCard).join('');
   }
   render();
+
+  // Intercept Details clicks to preserve scroll and use pushState
+  grid.addEventListener('click', (e) => {
+    const link = e.target.closest('a.btn');
+    if (!link) return;
+    const href = link.getAttribute('href') || '';
+    if (!href.startsWith('?id=')) return;
+    e.preventDefault();
+    const params = new URLSearchParams(href.slice(1));
+    const slug = params.get('id');
+    if (!slug) return;
+    const pr = getProjectBySlug(slug);
+    if (!pr) return;
+    history.pushState({}, '', href);
+    showDetail(pr);
+  });
 
   // --- Details routing via ?id=slug
   function getProjectBySlug(slug){ return projects.find(p=>p.slug===slug); }

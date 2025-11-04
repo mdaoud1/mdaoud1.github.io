@@ -48,6 +48,12 @@
     .row{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
     .kpi{display:grid; grid-template-columns:1fr 1fr; gap:10px}
     .kpi div{padding:10px; border:1px dashed var(--line); border-radius:10px; text-align:center}
+    /* Overlay modal for project details */
+    #project-detail { position: fixed; inset: 0; padding: 40px 16px; display: none; align-items: flex-start; justify-content: center; z-index: 50; background: color-mix(in oklab, var(--bg), transparent 35%); backdrop-filter: blur(6px) saturate(120%); }
+    #project-detail.open { display: flex; }
+    #project-detail[hidden] { display: none; }
+    #project-detail .card { width: min(980px, 100%); max-height: calc(100vh - 80px); overflow: auto; box-shadow: 0 12px 40px rgba(0,0,0,0.45); }
+    body.no-scroll { overflow: hidden; }
   </style>
 </head>
 <body>
@@ -110,7 +116,7 @@
       <div id="projectGrid" class="grid cols-3" aria-live="polite"></div>
     </section>
 
-    <section id="project-detail" hidden>
+    <section id="project-detail" class="overlay" hidden>
       <div class="card">
         <button id="backToProjects" class="btn">← Back to Projects</button>
         <h2 id="pd-title" style="margin-top:12px"></h2>
@@ -285,16 +291,18 @@
   function tagChip(txt){ return `<span class="tag">${txt}</span>`; }
 
   function showList(){
-    document.getElementById('projects').hidden = false;
+    // keep project grid visible, just close overlay
     detailSection.hidden = true;
-    // restore title
+    detailSection.classList.remove('open');
+    document.body.classList.remove('no-scroll');
     document.title = 'Mohammad Daoud — Portfolio';
   }
 
   function showDetail(pr){
-    // hide list
-    document.getElementById('projects').hidden = true;
+    // open overlay (do not hide projects list)
     detailSection.hidden = false;
+    detailSection.classList.add('open');
+    document.body.classList.add('no-scroll');
 
     // populate
     pdTitle.textContent = pr.title;
@@ -354,6 +362,20 @@
     if(!sid){ showList(); } else {
       const pr = getProjectBySlug(sid);
       if(pr){ showDetail(pr); }
+    }
+  });
+
+  // Close overlay on backdrop click or ESC
+  detailSection.addEventListener('click', (e) => {
+    if (e.target === detailSection) {
+      history.pushState({}, '', location.pathname);
+      showList();
+    }
+  });
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !detailSection.hidden) {
+      history.pushState({}, '', location.pathname);
+      showList();
     }
   });
 

@@ -208,24 +208,34 @@
       tags: ['Embedded', 'BLE', 'C/C++'],
       type: 'hardware',
       details: {
-        overview: 'DrinkSync is a smart hydration tracking system that automatically logs water intake using a load cell and BLE. It emphasizes accuracy, low-power operation, and manufacturability with cohesive hardware, firmware, and app integration.',
-        stack: ['C/C++ (embedded)', 'BLE', 'ESP32', 'HX711', 'KiCad', 'LTSpice', 'MATLAB', 'Swift'],
+        overview: "DrinkSync is a sustainable, universally compatible hydration tracking system designed to transform any reusable bottle into a smart IoT device. Built around an Arduino Nano, HX711 amplifier, MPU6050 motion sensor, and BLE module, it enables sub-gram precision tracking with an Android application that visualizes real-time hydration data. The system emphasizes affordability, open-source design, and environmental sustainability while maintaining multi-day battery life and cross-platform usability.",
+        stack: [
+          "Arduino Nano",
+          "HX711 Load Cell Amplifier",
+          "MPU6050 IMU",
+          "BLE Module (HC-05)",
+          "Android App (Kotlin / MVVM)",
+          "3D-Printed Enclosure",
+          "Li-ion Power System"
+        ],
         bullets: [
-          'Designed a 2-layer PCB with analog signal conditioning and 3.3 V regulated power.',
-          'Implemented firmware for calibration, averaging, and BLE characteristic updates.',
-          'Created a custom BLE service for real-time hydration data to the iOS app.',
-          'Validated signals and filters with LTSpice and MATLAB; optimized low-power modes.'
+          "Achieved sub-gram weight resolution (0.05 g mean error) with hybrid weight-motion detection.",
+          "Implemented BLE communication with <300 ms latency and multi-day runtime (38–68 h).",
+          "Fused load and inertial sensor data to accurately distinguish true drinking events.",
+          "Developed Kotlin-based Android app with real-time tracking, reminders, and analytics.",
+          "Designed a universal 3D-printed enclosure supporting all common bottle geometries.",
+          "Delivered an open-source, reusable, and low-cost ($24) system emphasizing sustainability."
         ],
         links: [
-          { label: 'GitHub', href: 'https://github.com/mdaoud1/DrinkSync' },
-          { label: 'Demo Video', href: 'https://youtu.be/example' },
-          { label: 'PCB Files', href: 'https://github.com/mdaoud1/DrinkSync/tree/main/hardware' }
+          { label: "GitHub Repository", href: "https://github.com/mdaoud1/DrinkSync" },
+          { label: "Demo Video", href: "https://youtu.be/example" },
+          { label: "Full IEEE Paper (PDF)", href: "DrinkSync_Official_IEEE_Paper.pdf" }
         ],
         gallery: [
-          'assets/drinksync/cover.jpg',
-          'assets/drinksync/pcb.jpg',
-          'assets/drinksync/app.jpg',
-          'assets/drinksync/setup.jpg'
+          "assets/drinksync/cover.jpg",
+          "assets/drinksync/pcb.jpg",
+          "assets/drinksync/app.jpg",
+          "assets/drinksync/setup.jpg"
         ]
       },
     },

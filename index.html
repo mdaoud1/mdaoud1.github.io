@@ -45,6 +45,17 @@
     footer{padding:40px 0; color:var(--muted); text-align:center; border-top:1px solid var(--line)}
     .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0, 0, 1px, 1px); border:0}
     .proj-img{aspect-ratio:16/9; width:100%; border-radius:10px; object-fit:cover; border:1px solid var(--line); background:#0e0f12}
+    /* Show full images (no crop) inside the details overlay */
+    #project-detail .proj-img {
+      object-fit: contain;
+      aspect-ratio: auto;
+      width: 100%;
+      height: auto;
+      background: #0e0f12; /* keeps a neutral letterbox if aspect doesn’t match */
+    }
+    #pd-gallery img {
+      max-height: 60vh; /* prevent overly tall images while keeping full framing */
+    }
     .row{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
     .kpi{display:grid; grid-template-columns:1fr 1fr; gap:10px}
     .kpi div{padding:10px; border:1px dashed var(--line); border-radius:10px; text-align:center}

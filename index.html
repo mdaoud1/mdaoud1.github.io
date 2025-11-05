@@ -270,7 +270,13 @@
   const pdGallery = document.getElementById('pd-gallery');
   let scrollPosBeforeOverlay = null;
 
-  function tagChip(txt){ return `<span class="tag">${txt}</span>`; }
+function tagChip(txt){ return `<span class="tag">${txt}</span>`; }
+
+  function imgFallback(ev){
+    try { console.warn('Image failed to load:', ev.target?.src); } catch(e){}
+    ev.target.onerror = null;
+    ev.target.src = 'https://dummyimage.com/1600x900/222428/e8eaf0&text=Image+not+found';
+  }
 
   function showList(){
     // keep project grid visible, just close overlay
@@ -302,6 +308,7 @@
     pdTags.innerHTML = pr.tags.map(tagChip).join('');
     pdHero.src = pr.img;
     pdHero.alt = pr.title;
+    pdHero.onerror = imgFallback;
 
     if(pr.details && pr.details.overview){ pdOverview.textContent = pr.details.overview; }
     else { pdOverview.textContent = pr.blurb || ''; }
@@ -312,7 +319,7 @@
 
     pdLinks.innerHTML = (pr.details?.links || []).map(l=>`<a class="btn" href="${l.href}" target="_blank" rel="noopener noreferrer" ${l.download ? 'download' : ''}>${l.label}</a>`).join('');
 
-    pdGallery.innerHTML = (pr.details?.gallery || []).map(src=>`<img class="proj-img" loading="lazy" alt="${pr.title} asset" src="${src}">`).join('');
+    pdGallery.innerHTML = (pr.details?.gallery || []).map(src=>`<img class="proj-img" loading="lazy" alt="${pr.title} asset" src="${src}" onerror="imgFallback(event)">`).join('');
 
     // update title
     document.title = pr.title + ' — Project';
@@ -321,7 +328,7 @@
   function projectCard(p){
     return `
       <article class="card">
-        <img class="proj-img" alt="${p.title}" src="${p.img}" loading="lazy" />
+        <img class="proj-img" alt="${p.title}" src="${p.img}" loading="lazy" onerror="imgFallback(event)" />
         <h3>${p.title}</h3>
         <p class="muted">${p.blurb}</p>
         <div class="list">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>

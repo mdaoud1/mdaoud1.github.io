@@ -229,7 +229,7 @@
         links: [
           { label: "GitHub Repository", href: "https://github.com/ks1686/DrinkSync" },
           { label: "Demo Video", href: "https://youtu.be/example" },
-          { label: "Full IEEE Paper (PDF)", href: "DrinkSync_Official_IEEE_Paper.pdf" }
+          { label: "Full IEEE Paper (PDF)", href: "DrinkSync_Official_IEEE_Paper.pdf", download: true }
         ],
         gallery: [
           "assets/drinksync/cover.jpg",
@@ -312,7 +312,7 @@
 
     pdBullets.innerHTML = (pr.details?.bullets || []).map(b=>`<li>${b}</li>`).join('');
 
-    pdLinks.innerHTML = (pr.details?.links || []).map(l=>`<a class="btn" href="${l.href}" target="_blank" rel="noopener noreferrer">${l.label}</a>`).join('');
+    pdLinks.innerHTML = (pr.details?.links || []).map(l=>`<a class="btn" href="${l.href}" target="_blank" rel="noopener noreferrer" ${l.download ? 'download' : ''}>${l.label}</a>`).join('');
 
     pdGallery.innerHTML = (pr.details?.gallery || []).map(src=>`<img class="proj-img" loading="lazy" alt="${pr.title} asset" src="${src}">`).join('');
 

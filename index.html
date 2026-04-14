@@ -36,6 +36,7 @@
     h2{margin:0 0 18px; font-size:24px}
     .card{background:linear-gradient(180deg, color-mix(in oklab, var(--card), white 2%), var(--card)); border:1px solid var(--line); border-radius:14px; padding:18px}
     .card h3{margin:0 0 8px; font-size:18px}
+    .project-card{cursor:pointer}
     .muted{color:var(--muted)}
     .list{display:flex; flex-wrap:wrap; gap:10px}
     .tag{font-size:12px; padding:6px 10px; border-radius:999px; background:color-mix(in oklab, var(--accent), transparent 85%); color:var(--text); border:1px solid var(--line)}
@@ -341,12 +342,11 @@ function tagChip(txt){ return `<span class="tag">${txt}</span>`; }
 
   function projectCard(p){
     return `
-      <article class="card">
+      <article class="card project-card" data-slug="${p.slug}" role="button" tabindex="0" aria-label="Open details for ${p.title}">
         <img class="proj-img" alt="${p.title}" src="${p.img}" loading="lazy" onerror="imgFallback(event)" />
         <h3>${p.title}</h3>
         <p class="muted">${p.blurb}</p>
         <div class="list">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
-        <p><a class="btn" href="?id=${p.slug}">Details</a></p>
       </article>
     `;
   }
@@ -358,19 +358,29 @@ function tagChip(txt){ return `<span class="tag">${txt}</span>`; }
   }
   render();
 
-  // Intercept Details clicks to preserve scroll and use pushState
+  // Intercept project card clicks to preserve scroll and use pushState
   grid.addEventListener('click', (e) => {
-    const link = e.target.closest('a.btn');
-    if (!link) return;
-    const href = link.getAttribute('href') || '';
-    if (!href.startsWith('?id=')) return;
-    e.preventDefault();
-    const params = new URLSearchParams(href.slice(1));
-    const slug = params.get('id');
+    const card = e.target.closest('.project-card');
+    if (!card) return;
+    const slug = card.getAttribute('data-slug');
     if (!slug) return;
     const pr = getProjectBySlug(slug);
     if (!pr) return;
-    history.pushState({}, '', href);
+    history.pushState({}, '', `?id=${slug}`);
+    showDetail(pr);
+  });
+
+  // Keyboard support for clickable project cards
+  grid.addEventListener('keydown', (e) => {
+    const card = e.target.closest('.project-card');
+    if (!card) return;
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    e.preventDefault();
+    const slug = card.getAttribute('data-slug');
+    if (!slug) return;
+    const pr = getProjectBySlug(slug);
+    if (!pr) return;
+    history.pushState({}, '', `?id=${slug}`);
     showDetail(pr);
   });
 

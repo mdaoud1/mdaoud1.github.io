@@ -1,0 +1,83 @@
+<!--
+  PROJECT PAGE TEMPLATE
+  ======================
+  To add a new project:
+  1. Copy this file to projects/<your-project-slug>.html
+  2. Replace every [BRACKETED] placeholder below with real content.
+  3. Add a thumbnail image to assets/img/projects/ and a hero/gallery image (or reuse the placeholder SVG).
+  4. Add a project card for it on index.html (in the #projects section), linking to your new file.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>[Project Name] — Mohammad Daoud</title>
+  <meta name="description" content="[One-sentence description of the project.]" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="container">
+      <a class="brand" href="../index.html#top">Mohammad Daoud</a>
+      <div class="nav-links" data-nav-links>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#education">Education</a>
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#skills">Skills</a>
+        <a href="../index.html#contact">Contact</a>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <button class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode" title="Toggle dark mode">
+          <span class="icon-moon">&#9789;</span><span class="icon-sun">&#9728;</span>
+        </button>
+        <button class="nav-toggle" data-nav-toggle aria-label="Toggle navigation menu" aria-expanded="false" title="Menu">&#9776;</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <header class="project-header">
+      <a class="back-link" href="../index.html#projects">&larr; Back to projects</a>
+      <h1>[Project Name]</h1>
+      <p class="project-meta">[Organization/context] · [Date range] · [Key tech, comma separated]</p>
+      <img class="hero-image" src="../assets/img/placeholder-project.svg" alt="[Describe the hero image]" />
+    </header>
+
+    <div class="project-body">
+      <h2>Overview</h2>
+      <p>[2-4 sentences: what the project is and why it exists.]</p>
+
+      <h2>My Role</h2>
+      <p>[What you specifically did — expand on your résumé bullets in fuller prose.]</p>
+
+      <h2>Tech Stack</h2>
+      <div class="tag-row">
+        <span class="tag">[Tech 1]</span>
+        <span class="tag">[Tech 2]</span>
+        <span class="tag">[Tech 3]</span>
+      </div>
+
+      <h2>Gallery</h2>
+      <div class="gallery">
+        <figure>
+          <img src="../assets/img/placeholder-project.svg" alt="[Describe image]" loading="lazy" />
+          <figcaption>[Caption]</figcaption>
+        </figure>
+      </div>
+
+      <h2>Links</h2>
+      <div class="link-row">
+        <a class="btn" href="#" target="_blank" rel="noopener noreferrer">[GitHub Repository]</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer container">
+    <div>&copy; <span data-year></span> Mohammad Daoud</div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

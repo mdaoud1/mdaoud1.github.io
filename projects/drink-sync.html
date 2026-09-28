@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DrinkSync — Mohammad Daoud</title>
+  <meta name="description" content="DrinkSync: an IEEE-published, low-cost IoT hydration tracking attachment with a companion Android app." />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="container">
+      <a class="brand" href="../index.html#top">Mohammad Daoud</a>
+      <div class="nav-links" data-nav-links>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#education">Education</a>
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#skills">Skills</a>
+        <a href="../index.html#contact">Contact</a>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <button class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode" title="Toggle dark mode">
+          <span class="icon-moon">&#9789;</span><span class="icon-sun">&#9728;</span>
+        </button>
+        <button class="nav-toggle" data-nav-toggle aria-label="Toggle navigation menu" aria-expanded="false" title="Menu">&#9776;</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <header class="project-header">
+      <a class="back-link" href="../index.html#projects">&larr; Back to projects</a>
+      <h1>DrinkSync — Hydration Tracker</h1>
+      <p class="project-meta">ECE Capstone · Rutgers University · Sep 2024 – May 2025 · Arduino, BLE, Kotlin</p>
+      <img class="hero-image" src="../assets/drinksync/DrinkSync_WorkBench.png" alt="DrinkSync hardware breakdown: load cells, IMU, microcontroller, smart bottle attachment, and companion app" />
+    </header>
+
+    <div class="project-body">
+      <h2>Overview</h2>
+      <p>
+        DrinkSync is a sustainable, universally compatible hydration tracking system that turns any reusable
+        bottle into a smart IoT device. Built around an Arduino Nano, an HX711 load cell amplifier, and an
+        MPU6050 motion sensor, it tracks water intake with sub-gram precision and streams that data over BLE to
+        an Android companion app for real-time visualization, reminders, and gamified goal tracking. The project
+        was co-authored and presented as a peer-reviewed IEEE paper.
+      </p>
+
+      <h2>My Role</h2>
+      <p>
+        I led the embedded systems side of the project: programming the microcontroller to process real-time
+        sensor data and calculate fluid consumption, and engineering the hardware (Arduino Nano, HX711 load
+        cells, MPU6050 IMU) that measures water intake and user activity. I also managed the project through its
+        full development lifecycle, from concept to functional prototype, and built the Kotlin Android app with
+        BLE streaming, real-time data visualization, and gamified goal tracking.
+      </p>
+
+      <h2>Tech Stack</h2>
+      <div class="tag-row">
+        <span class="tag">Arduino Nano</span>
+        <span class="tag">HX711 Load Cell Amplifier</span>
+        <span class="tag">MPU6050 IMU</span>
+        <span class="tag">BLE (HC-05)</span>
+        <span class="tag">Kotlin / Android</span>
+        <span class="tag">3D-Printed Enclosure</span>
+      </div>
+
+      <h2>Gallery</h2>
+      <div class="gallery">
+        <figure>
+          <img src="../assets/drinksync/DrinkSync_CAD_Electronics.png" alt="CAD rendering of the DrinkSync smart coaster chassis with internal electronics" loading="lazy" />
+          <figcaption>CAD model of the enclosure and internal electronics layout.</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/drinksync/DrinkSync_App.png" alt="DrinkSync Android app screens: hydration tracking, achievements, settings, and notifications" loading="lazy" />
+          <figcaption>Companion Android app — live tracking, achievements, and reminders.</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/drinksync/present.jpeg" alt="Presenting the DrinkSync capstone project at Rutgers" loading="lazy" />
+          <figcaption>Presenting the project as part of the ECE capstone.</figcaption>
+        </figure>
+      </div>
+      <!-- TODO: add a demo video link here once one is available -->
+
+      <h2>Links</h2>
+      <div class="link-row">
+        <a class="btn" href="https://github.com/ks1686/DrinkSync" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+        <a class="btn" href="https://ieeexplore.ieee.org/document/11449671" target="_blank" rel="noopener noreferrer">IEEE Published Paper</a>
+        <a class="btn" href="../DrinkSync%20Paper.pdf" target="_blank" rel="noopener noreferrer">Read Paper (PDF)</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer container">
+    <div>&copy; <span data-year></span> Mohammad Daoud</div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

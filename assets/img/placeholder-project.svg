@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" role="img" aria-label="Project image placeholder">
+  <rect width="640" height="360" fill="#e3e4e8"/>
+  <g fill="none" stroke="#9a9da5" stroke-width="2">
+    <rect x="40" y="40" width="560" height="280" rx="8"/>
+    <path d="M40 260 L220 140 L320 220 L420 120 L600 240" />
+    <circle cx="480" cy="100" r="24"/>
+  </g>
+  <text x="320" y="345" font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="15" fill="#5b5f68" text-anchor="middle">Screenshot coming soon</text>
+</svg>

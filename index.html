@@ -3,436 +3,220 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mohammad Daoud — Portfolio</title>
-  <meta name="description" content="Engineering portfolio for Mohammad Daoud: electrical/computer engineering, embedded systems, iOS, hardware builds, and projects." />
-  <meta name="theme-color" content="#0a0a0a" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap">
-  <style>
-    :root { --bg: #1a1b1f; --card:#222428; --text:#e8eaf0; --muted:#aab2c5; --accent:#5cc8ff; --line:#2a2d33; }
-    :root.light { --bg:#ffffff; --card:#fafafa; --text:#0b0c0e; --muted:#4a5568; --accent:#006dff; --line:#e6e8ee; }
-    *{box-sizing:border-box}
-    html,body{margin:0; height:100%; scroll-behavior:smooth;}
-    body{font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; background:var(--bg); color:var(--text);}
-    a{color:var(--accent); text-decoration:none}
-    header{position:sticky; top:0; z-index:10; backdrop-filter:saturate(120%) blur(8px); background:color-mix(in oklab, var(--bg), transparent 35%); border-bottom:1px solid var(--line)}
-    .container{max-width:1100px; margin:0 auto; padding:0 20px}
-    .nav{display:flex; align-items:center; justify-content:space-between; height:64px}
-    .brand{font-weight:800; letter-spacing:0.3px}
-    .nav a{margin-left:18px; font-weight:600}
-    .btn{display:inline-flex; gap:8px; align-items:center; padding:10px 14px; border:1px solid var(--line); border-radius:10px; background:linear-gradient(180deg, color-mix(in oklab, var(--card), white 2%), var(--card)); color:var(--text)}
-    .btn:hover{transform:translateY(-1px)}
-    .hero{display:grid; grid-template-columns:1.2fr 1fr; gap:36px; padding:72px 0}
-    .hero h1{font-size:clamp(28px, 4.4vw, 48px); line-height:1.05; margin:0 0 12px}
-    .hero p{color:var(--muted); font-size:clamp(14px, 1.6vw, 18px)}
-    .chip{display:inline-block; padding:6px 10px; border:1px solid var(--line); border-radius:999px; font-size:12px; color:var(--muted); margin-right:8px}
-    .grid{display:grid; gap:18px}
-    .grid.cols-3{grid-template-columns:repeat(3, minmax(0,1fr))}
-    .grid.cols-2{grid-template-columns:repeat(2, minmax(0,1fr))}
-    @media (max-width:900px){ .hero{grid-template-columns:1fr} .grid.cols-3{grid-template-columns:1fr 1fr} }
-    @media (max-width:640px){ .grid.cols-3,.grid.cols-2{grid-template-columns:1fr} }
-    section{padding:48px 0; border-top:1px solid var(--line)}
-    h2{margin:0 0 18px; font-size:24px}
-    .card{background:linear-gradient(180deg, color-mix(in oklab, var(--card), white 2%), var(--card)); border:1px solid var(--line); border-radius:14px; padding:18px}
-    .card h3{margin:0 0 8px; font-size:18px}
-    .project-card{cursor:pointer}
-    .muted{color:var(--muted)}
-    .list{display:flex; flex-wrap:wrap; gap:10px}
-    .tag{font-size:12px; padding:6px 10px; border-radius:999px; background:color-mix(in oklab, var(--accent), transparent 85%); color:var(--text); border:1px solid var(--line)}
-    .toolbar{display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin:6px 0 18px}
-    .toolbar .tab{padding:8px 12px; border:1px solid var(--line); border-radius:10px; cursor:pointer}
-    .toolbar .tab[aria-selected="true"]{background:color-mix(in oklab, var(--accent), transparent 84%);}
-    footer{padding:40px 0; color:var(--muted); text-align:center; border-top:1px solid var(--line)}
-    .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0, 0, 1px, 1px); border:0}
-    .proj-img{aspect-ratio:16/9; width:100%; border-radius:10px; object-fit:cover; border:1px solid var(--line); background:#0e0f12}
-    /* Show full images (no crop) inside the details overlay */
-    #project-detail .proj-img {
-      object-fit: contain;
-      aspect-ratio: auto;
-      width: 100%;
-      height: auto;
-      background: #0e0f12; /* keeps a neutral letterbox if aspect doesn’t match */
-    }
-    #pd-gallery img {
-      max-height: 60vh; /* prevent overly tall images while keeping full framing */
-    }
-    .row{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
-    .kpi{display:grid; grid-template-columns:1fr 1fr; gap:10px}
-    .kpi div{padding:10px; border:1px dashed var(--line); border-radius:10px; text-align:center}
-    /* Overlay modal for project details */
-    #project-detail { position: fixed; inset: 0; padding: 40px 16px; display: none; align-items: flex-start; justify-content: center; z-index: 50; background: color-mix(in oklab, var(--bg), transparent 35%); backdrop-filter: blur(6px) saturate(120%); }
-    #project-detail.open { display: flex; }
-    #project-detail[hidden] { display: none; }
-    #project-detail .card { width: min(980px, 100%); max-height: calc(100vh - 80px); overflow: auto; box-shadow: 0 12px 40px rgba(0,0,0,0.45); }
-    body.no-scroll { overflow: hidden; }
-  </style>
+  <title>Mohammad Daoud</title>
+  <meta name="description" content="Mohammad Daoud — Electrical & Computer Engineer. Portfolio, experience, and projects." />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header>
-    <nav class="container nav" aria-label="Primary">
-      <div class="brand">Mohammad Daoud</div>
-      <div class="row">
-        <a href="#projects">Projects</a>
+  <nav class="site-nav">
+    <div class="container">
+      <a class="brand" href="#top">Mohammad Daoud</a>
+      <div class="nav-links" data-nav-links>
+        <a href="#about">About</a>
         <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
-        <button id="themeToggle" class="btn" aria-pressed="false" title="Toggle theme">🌓 <span class="sr-only">Toggle theme</span></button>
       </div>
-    </nav>
-  </header>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <button class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode" title="Toggle dark mode">
+          <span class="icon-moon">&#9789;</span><span class="icon-sun">&#9728;</span>
+        </button>
+        <button class="nav-toggle" data-nav-toggle aria-label="Toggle navigation menu" aria-expanded="false" title="Menu">&#9776;</button>
+      </div>
+    </div>
+  </nav>
 
-  <main class="container">
-    <section class="hero" id="top">
-      <div>
-        <span class="chip">Electrical & Computer Engineering</span>
-        <span class="chip">Circuit Design • Hardware • Software</span>
-        <h1>Mohammad Daoud's Portfolio</h1>
-        <p>Actively seeking engineering opportunities where I can apply my skills in circuit design, software development, and technical problem-solving. Excited to bring my experiences from Apple and the Army to deliver innovative solutions in dynamic, collaborative environments.</p>
-        <div class="toolbar" role="group" aria-label="Quick Links">
-          <a class="btn" href="#projects">View Projects</a>
-          <a class="btn" href="Mohammad_Daoud_Resume.pdf" download>Download Résumé</a>          <a class="btn" href="mailto:mohammaddaoud003@gmail.com">Email Me</a>
-        </div>
-      </div>
-      <div>
-        <img class="proj-img" alt="Electronics PCB background image" src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1600&auto=format&fit=crop" loading="lazy" onerror="imgFallback(event)" />
-      </div>
-    </section>
-
-    <section id="skills">
-      <h2>Skills</h2>
-      <div class="grid cols-3">
-        <div class="card">
-          <h3>Systems & Tools</h3>
-          <p class="muted">LTSpice, PSpice, SolidWorks Electrical, PCB Design, AutoCAD, BLE, Embedded Dev, Unit Testing, OOP, iOS/watchOS Certified, PyTorch, Secret Security Clearance</p>
-        </div>
-        <div class="card">
-          <h3>Languages</h3>
-          <p class="muted">Verilog, MATLAB, RISC-V Assembly, C/C++, Python, Java, JavaScript, Swift, Arabic (fluent)</p>
-        </div>
-        <div class="card">
-          <h3>Focus Areas</h3>
-          <p class="muted">Circuit / PCB Design, FPGA / VHDL, Embedded Firmware, Hardware Validation & Testing</p>
-        </div>
+  <main id="top">
+    <section class="hero container" id="about">
+      <span class="eyebrow">Electrical &amp; Computer Engineer</span>
+      <h1>Mohammad Daoud</h1>
+      <p class="tagline">Nuclear propulsion systems by day, embedded &amp; mobile software on the side.</p>
+      <p class="bio">
+        I'm an electrical engineer at Portsmouth Naval Shipyard, where I work on control and instrumentation
+        systems for submarine nuclear propulsion plants. I also serve as a Network Operations Officer in the
+        U.S. Army Reserve, planning and securing communication systems. Outside of that, I build things —
+        from an IEEE-published IoT hydration tracker to a mobile app for property management — and hold a
+        B.S. in Electrical &amp; Computer Engineering from Rutgers University.
+      </p>
+      <div class="contact-row">
+        <a class="btn btn-primary" href="resume.pdf" download>&#8681; Download Résumé</a>
+        <a class="btn" href="mailto:mohammaddaoud003@gmail.com">Email</a>
+        <a class="btn" href="https://www.linkedin.com/in/mdaoud1/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="btn" href="https://github.com/mdaoud1" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
     </section>
 
-    <section id="projects">
-      <div class="row" style="justify-content:space-between; align-items:end">
-        <h2>Projects</h2>
-        <div class="toolbar" role="tablist" aria-label="Filter projects">
-          <button class="tab" role="tab" aria-selected="true" data-filter="all">All</button>
-          <button class="tab" role="tab" aria-selected="false" data-filter="hardware">Hardware</button>
-          <button class="tab" role="tab" aria-selected="false" data-filter="software">Software</button>
+    <section class="section container" id="highlights">
+      <h2>Highlights</h2>
+      <div class="highlights-grid">
+        <div class="highlight-card">
+          <span class="stat">3.20</span>
+          <span class="label">GPA, Rutgers ECE</span>
+        </div>
+        <div class="highlight-card">
+          <span class="stat">IEEE</span>
+          <span class="label">Published &amp; presented paper</span>
+        </div>
+        <div class="highlight-card">
+          <span class="stat">TS/SCI</span>
+          <span class="label">Top Secret Clearance</span>
+        </div>
+        <div class="highlight-card">
+          <span class="stat">3</span>
+          <span class="label">Concurrent engineering &amp; military roles</span>
         </div>
       </div>
-      <div id="projectGrid" class="grid cols-3" aria-live="polite"></div>
     </section>
 
-    <section id="project-detail" class="overlay" hidden>
-      <div class="card">
-        <button id="backToProjects" class="btn">← Back to Projects</button>
-        <h2 id="pd-title" style="margin-top:12px"></h2>
-        <div id="pd-tags" class="list" style="margin:8px 0 14px"></div>
-        <img id="pd-hero" class="proj-img" alt="Project image" src="" />
-        <h3 style="margin-top:18px">Overview</h3>
-        <p id="pd-overview" class="muted"></p>
-        <h3 style="margin-top:18px">Tech Stack</h3>
-        <div id="pd-stack" class="list"></div>
-        <h3 style="margin-top:18px">Highlights</h3>
-        <ul id="pd-bullets"></ul>
-        <h3 style="margin-top:18px">Links</h3>
-        <div id="pd-links" class="list"></div>
-        <div id="pd-gallery" class="grid cols-2" style="margin-top:18px"></div>
-      </div>
-    </section>
-
-
-    <section id="experience">
+    <section class="section container" id="experience">
       <h2>Experience</h2>
-      <div class="card">
-        <h3>Portsmouth Naval Shipyard — Nuclear Electrical Engineer</h3>
-        <p class="muted">Kittery, ME • 02/2026 – Present</p>
+
+      <div class="entry">
+        <div class="entry-head">
+          <h3>Nuclear Electrical Engineer · Portsmouth Naval Shipyard</h3>
+          <span class="entry-dates">Feb 2026 – Present</span>
+        </div>
+        <p class="entry-sub">Kittery, ME</p>
         <ul>
-          <li>Design, analyze, and support electrical control and instrumentation systems for nuclear propulsion plants on submarines.</li>
-          <li>Work directly with electrical subcomponents and microelectronic systems, including analog and digital circuits, sensors, and signal conditioning hardware.</li>
-          <li>Perform circuit-level analysis and troubleshooting to diagnose faults in control, sensing, and embedded electronic systems.</li>
-          <li>Interpret schematics, wiring diagrams, and PCB-level designs to support system integration and validation.</li>
-          <li>Evaluate system performance with focus on signal integrity, noise reduction, and reliability in high-stakes environments.</li>
-          <li>Support testing and verification of embedded and control systems, including hardware validation and performance analysis.</li>
-          <li>Review and validate engineering designs to ensure compliance with NAVSEA standards, electrical specifications, and nuclear safety requirements.</li>
-          <li>Collaborate with cross-functional teams to implement hardware upgrades and optimize subsystem performance and fault tolerance.</li>
-          <li>Develop and maintain technical documentation including job summaries, task group instructions, and nuclear standard procedures.</li>
-          <li>Apply systems engineering principles to improve robustness, scalability, and reliability of mission-critical electronic systems.</li>
-          <li>Provide technical guidance on electrical and embedded systems to ensure operational readiness and system integrity.</li>
+          <li>Designed and supported electrical control and instrumentation systems for submarine nuclear propulsion plants.</li>
+          <li>Analyzed and troubleshot circuit-level issues in analog/digital systems, sensors, and embedded electronics.</li>
+          <li>Interpreted schematics and PCB-level designs to support system integration and validation.</li>
+          <li>Performed hardware testing and validation with a focus on signal integrity, noise reduction, and system reliability.</li>
+          <li>Ensured compliance with NAVSEA standards, electrical specifications, and nuclear safety requirements.</li>
+          <li>Collaborated cross-functionally to implement hardware upgrades and improve subsystem performance and fault tolerance.</li>
         </ul>
-        <br>
-        <h3>Apple — Technical Specialist</h3>
-        <p class="muted">Freehold, NJ • 02/2022 – Present</p>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <h3>Network Operations Officer (O-1) · U.S. Army (Reserve)</h3>
+          <span class="entry-dates">Dec 2021 – Present</span>
+        </div>
+        <p class="entry-sub">Fort Dix, NJ</p>
         <ul>
-          <li>Diagnosed and resolved hardware and software issues across iPhone, iPad, Apple Watch, and Mac devices using structured troubleshooting and failure analysis methodologies.</li>
-          <li>Performed hardware-focused debugging, isolating faults related to components such as batteries, displays, sensors, and connectivity modules.</li>
-          <li>Applied understanding of device architecture to differentiate between hardware, firmware, and software failures and recommend appropriate repair actions.</li>
-          <li>Utilized Apple diagnostic tools to analyze system performance, detect hardware faults, and validate repair outcomes.</li>
-          <li>Identified failure patterns and recurring hardware issues, contributing to improved troubleshooting efficiency and service accuracy.</li>
-          <li>Interpreted system behaviors and test results to support root cause analysis of device malfunctions.</li>
-          <li>Executed device repairs and replacements in accordance with Apple hardware service procedures and quality standards.</li>
-          <li>Translated complex hardware issues and repair solutions to customers in a clear and actionable manner.</li>
-          <li>Maintained detailed documentation of diagnostics, repairs, and outcomes to support service tracking and continuous improvement.</li>
-          <li>Collaborated with senior technicians and engineering support channels to escalate and resolve advanced hardware-related issues, ensuring an SOP across multiple stores to mitigate future confusion.</li>
+          <li>Top Secret Clearance (TS/SCI).</li>
+          <li>Design, implement, and maintain secure voice, data, and information communication systems.</li>
+          <li>Plan and manage large-scale communication infrastructure in high-pressure environments.</li>
+          <li>Supervise technical teams to ensure optimal performance of advanced communication networks.</li>
+          <li>Troubleshoot and resolve complex system issues to maintain uninterrupted operations.</li>
+          <li>Apply systems engineering principles to develop and execute tactical communication solutions.</li>
+          <li>Ensure cybersecurity measures for sensitive communication networks.</li>
         </ul>
-        <br>
-        <h3>U.S. Army (Reserve) — Network Operations Officer (O‑1)</h3>
-        <p class="muted">Fort Dix, NJ • 12/2021 – Present</p>
+      </div>
+
+      <div class="entry">
+        <div class="entry-head">
+          <h3>Technical Specialist · Apple</h3>
+          <span class="entry-dates">Feb 2022 – Present</span>
+        </div>
+        <p class="entry-sub">Freehold, NJ</p>
         <ul>
-          <li>Active Security Clearance Granted 2022-01-28</li>
-          <li>Design, implement, and maintain secure voice, data, and information communication systems</li>
-          <li>Plan and manage large-scale communication infrastructure in high-pressure environments</li>
-          <li>Supervise technical teams to ensure optimal performance of advanced communication networks</li>
-          <li>Troubleshoot and resolve complex system issues to maintain uninterrupted operations</li>
-          <li>Apply systems engineering principles to develop and execute tactical communication solutions</li>
-          <li>Ensure cybersecurity measures for sensitive communication networks</li>
-        </ul>
-        <br>
-        <h3>EZ Clinical Laboratory — Lab Accessioner</h3>
-        <p class="muted">East Brunswick, NJ • 12/2020 – 06/2021</p>
-        <ul>
-          <li>Maintain daily tasks to keep machines operable and intact.</li>
-          <li>Run diagnostics to ensure inspection of machines.</li>
-          <li>Meticulously maintain records, such as pharmacy files, patient profiles, charge system files, and inventory.</li>
-          <li>Increase productivity through efficient use of laboratory equipment such as centrifuges, pipettes, and analyzers.</li>
+          <li>Completed troubleshooting and diagnostics utilizing company resources.</li>
+          <li>Translated complex technical issues into digestible language for non-technical users.</li>
+          <li>Suggested software and hardware modifications to improve overall functionality.</li>
+          <li>Resolved a diverse range of technical issues across multiple systems and applications for end users.</li>
+          <li>Assisted customers in identifying issues and explained solutions to restore service and functionality.</li>
+          <li>Thoroughly documented support interactions for future reference.</li>
         </ul>
       </div>
     </section>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <div class="card">
-        <p>Interested in collaborating or have a role that fits my skill set? Reach me at <a href="mailto:mohammaddaoud003@gmail.com">mohammaddaoud003@gmail.com</a> or connect on <a href="https://www.linkedin.com/in/mdaoud1/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</p>
+    <section class="section container" id="education">
+      <h2>Education</h2>
+      <div class="entry">
+        <div class="entry-head">
+          <h3>B.S. Electrical &amp; Computer Engineering · Rutgers University</h3>
+          <span class="entry-dates">Sep 2021 – May 2025</span>
+        </div>
+        <p class="entry-sub">New Brunswick, NJ</p>
+        <ul>
+          <li>GPA: 3.20/4.0 · Minor in Computer Science and Military Science</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section container" id="projects">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <article class="project-card">
+          <img class="thumb" src="assets/drinksync/DrinkSync_WorkBench.png" alt="DrinkSync hardware components: load cells, IMU, microcontroller, and smart bottle attachment" loading="lazy" />
+          <div class="body">
+            <h3>DrinkSync — Hydration Tracker</h3>
+            <p>IEEE-published, low-cost IoT hydration tracking attachment with a companion Android app. ECE Capstone, Rutgers University.</p>
+            <div class="tag-row">
+              <span class="tag">Embedded</span>
+              <span class="tag">BLE</span>
+              <span class="tag">Kotlin</span>
+              <span class="tag">IEEE Paper</span>
+            </div>
+            <a class="view-link" href="projects/drink-sync.html">View project &rarr;</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <!-- TODO: replace with a real screenshot once available -->
+          <img class="thumb" src="assets/img/placeholder-project.svg" alt="Landlord Mobile Application placeholder image" loading="lazy" />
+          <div class="body">
+            <h3>Landlord Mobile Application</h3>
+            <p>Mobile app for a 100+ unit rental portfolio — led a student development team on backend, frontend, and secure auth.</p>
+            <div class="tag-row">
+              <span class="tag">Full Stack</span>
+              <span class="tag">Mobile</span>
+              <span class="tag">Auth</span>
+            </div>
+            <a class="view-link" href="projects/landlord-app.html">View project &rarr;</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container" id="skills">
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3>Languages</h3>
+          <div class="tag-row">
+            <span class="tag">Java</span><span class="tag">JavaScript</span><span class="tag">C/C++</span>
+            <span class="tag">Python</span><span class="tag">Swift</span><span class="tag">Kotlin</span>
+            <span class="tag">RISC-V Assembly</span><span class="tag">MATLAB</span><span class="tag">Verilog</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Tools &amp; Frameworks</h3>
+          <div class="tag-row">
+            <span class="tag">PyTorch</span><span class="tag">SwiftUI</span><span class="tag">LTspice</span>
+            <span class="tag">AutoCAD</span><span class="tag">SolidWorks</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Concepts</h3>
+          <div class="tag-row">
+            <span class="tag">Full Stack</span><span class="tag">Backend</span><span class="tag">Mobile</span>
+            <span class="tag">Embedded Development</span><span class="tag">Unit Testing</span><span class="tag">OOP</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Human Languages</h3>
+          <div class="tag-row">
+            <span class="tag">English (Native)</span><span class="tag">Arabic (Fluent)</span>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="container">© <span id="year"></span> Mohammad Daoud • Built with plain HTML/JS • <a href="#top">Back to top</a></div>
+  <footer class="site-footer container" id="contact">
+    <div class="contact-row">
+      <a class="btn" href="mailto:mohammaddaoud003@gmail.com">Email</a>
+      <a class="btn" href="https://www.linkedin.com/in/mdaoud1/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a class="btn" href="https://github.com/mdaoud1" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a class="btn" href="resume.pdf" download>Résumé</a>
+    </div>
+    <div>&copy; <span data-year></span> Mohammad Daoud</div>
   </footer>
 
-  <script>
-  // --- Theme toggle
-  (function(){
-    const key = 'prefers-light';
-    const root = document.documentElement;
-    const saved = localStorage.getItem(key);
-    if(saved === 'true'){ root.classList.add('light'); }
-    document.getElementById('themeToggle').addEventListener('click', function(){
-      const isLight = root.classList.toggle('light');
-      localStorage.setItem(key, String(isLight));
-      this.setAttribute('aria-pressed', String(isLight));
-    });
-  })();
-
-  // --- Data: Add/edit your projects here
-  const projects = [
-    {
-      title: 'DrinkSync — Smart Hydration',
-      slug: 'drinksync',
-      blurb: 'IEEE-published hydration tracking system with BLE and embedded sensing, presented at IEEE ICCE 2026 in Dubai.',
-      href: '#',
-      img: "/assets/drinksync/DrinkSync_WorkBench.png",
-      tags: ['Embedded', 'BLE', 'C/C++'],
-      type: 'hardware',
-      details: {
-        overview: "DrinkSync is a sustainable, universally compatible hydration tracking system designed to transform any reusable bottle into a smart IoT device. Built around an Arduino Nano, HX711 amplifier, MPU6050 motion sensor, and BLE module, it enables sub-gram precision tracking with an Android application that visualizes real-time hydration data. The system emphasizes affordability, open-source design, and environmental sustainability while maintaining multi-day battery life and cross-platform usability.",
-        stack: [
-          "Arduino Nano",
-          "HX711 Load Cell Amplifier",
-          "MPU6050 IMU",
-          "BLE Module (HC-05)",
-          "Android App (Kotlin / MVVM)",
-          "3D-Printed Enclosure",
-          "Li-ion Power System"
-        ],
-        bullets: [
-          "Published as an IEEE paper and presented at IEEE ICCE 2026 in Dubai, UAE.",
-          "Demonstrated a low-cost, sustainable hydration tracking system in a conference-reviewed research setting.",
-          "Achieved sub-gram weight resolution (0.05 g mean error) with hybrid weight-motion detection.",
-          "Implemented BLE communication with <300 ms latency and multi-day runtime (38–68 h).",
-          "Fused load and inertial sensor data to accurately distinguish true drinking events.",
-          "Developed Kotlin-based Android app with real-time tracking, reminders, and analytics.",
-          "Designed a universal 3D-printed enclosure supporting all common bottle geometries.",
-          "Delivered an open-source, reusable, and low-cost ($24) system emphasizing sustainability."
-        ],
-        links: [
-          { label: "GitHub Repository", href: "https://github.com/ks1686/DrinkSync" },
-          { label: "Demo Video", href: "https://youtu.be/example" },
-          { label: "IEEE Published Paper", href: "https://ieeexplore.ieee.org/document/11449671", download: false }
-        ],
-        gallery: [
-          "/assets/drinksync/DrinkSync_CAD_Electronics.png",
-          "/assets/drinksync/DrinkSync_App.png",
-          "/assets/drinksync/present.jpeg"
-        ]
-      }
-    }
-  ];
-
-  // --- Renderers
-  const grid = document.getElementById('projectGrid');
-  const detailSection = document.getElementById('project-detail');
-  const pdTitle = document.getElementById('pd-title');
-  const pdTags = document.getElementById('pd-tags');
-  const pdHero = document.getElementById('pd-hero');
-  const pdOverview = document.getElementById('pd-overview');
-  const pdStack = document.getElementById('pd-stack');
-  const pdBullets = document.getElementById('pd-bullets');
-  const pdLinks = document.getElementById('pd-links');
-  const pdGallery = document.getElementById('pd-gallery');
-  let scrollPosBeforeOverlay = null;
-
-function tagChip(txt){ return `<span class="tag">${txt}</span>`; }
-
-  function imgFallback(ev){
-    try { console.warn('Image failed to load:', ev.target?.src); } catch(e){}
-    ev.target.onerror = null;
-    ev.target.src = 'https://dummyimage.com/1600x900/222428/e8eaf0&text=Image+not+found';
-  }
-
-  function showList(){
-    // keep project grid visible, just close overlay
-    detailSection.hidden = true;
-    detailSection.classList.remove('open');
-    document.body.classList.remove('no-scroll');
-    // restore scroll position if we opened from the list
-    if (scrollPosBeforeOverlay !== null) {
-      const rootEl = document.documentElement;
-      const prev = rootEl.style.scrollBehavior;
-      rootEl.style.scrollBehavior = 'auto';
-      window.scrollTo(0, scrollPosBeforeOverlay);
-      rootEl.style.scrollBehavior = prev;
-      scrollPosBeforeOverlay = null;
-    }
-    document.title = 'Mohammad Daoud — Portfolio';
-  }
-
-  function showDetail(pr){
-    // open overlay (do not hide projects list)
-    // remember current scroll position before locking body
-    scrollPosBeforeOverlay = window.scrollY;
-    detailSection.hidden = false;
-    detailSection.classList.add('open');
-    document.body.classList.add('no-scroll');
-
-    // populate
-    pdTitle.textContent = pr.title;
-    pdTags.innerHTML = pr.tags.map(tagChip).join('');
-    pdHero.src = pr.img;
-    pdHero.alt = pr.title;
-    pdHero.onerror = imgFallback;
-
-    if(pr.details && pr.details.overview){ pdOverview.textContent = pr.details.overview; }
-    else { pdOverview.textContent = pr.blurb || ''; }
-
-    pdStack.innerHTML = (pr.details?.stack || pr.tags || []).map(tagChip).join('');
-
-    pdBullets.innerHTML = (pr.details?.bullets || []).map(b=>`<li>${b}</li>`).join('');
-
-    pdLinks.innerHTML = (pr.details?.links || []).map(l=>`<a class="btn" href="${l.href}" target="_blank" rel="noopener noreferrer" ${l.download ? 'download' : ''}>${l.label}</a>`).join('');
-
-    pdGallery.innerHTML = (pr.details?.gallery || []).map(src=>`<img class="proj-img" loading="lazy" alt="${pr.title} asset" src="${src}" onerror="imgFallback(event)">`).join('');
-
-    // update title
-    document.title = pr.title + ' — Project';
-  }
-
-  function projectCard(p){
-    return `
-      <article class="card project-card" data-slug="${p.slug}" role="button" tabindex="0" aria-label="Open details for ${p.title}">
-        <img class="proj-img" alt="${p.title}" src="${p.img}" loading="lazy" onerror="imgFallback(event)" />
-        <h3>${p.title}</h3>
-        <p class="muted">${p.blurb}</p>
-        <div class="list">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
-      </article>
-    `;
-  }
-
-  function render(filter='all'){
-    grid.innerHTML = projects
-      .filter(p => filter==='all' ? true : p.type===filter)
-      .map(projectCard).join('');
-  }
-  render();
-
-  // Intercept project card clicks to preserve scroll and use pushState
-  grid.addEventListener('click', (e) => {
-    const card = e.target.closest('.project-card');
-    if (!card) return;
-    const slug = card.getAttribute('data-slug');
-    if (!slug) return;
-    const pr = getProjectBySlug(slug);
-    if (!pr) return;
-    history.pushState({}, '', `?id=${slug}`);
-    showDetail(pr);
-  });
-
-  // Keyboard support for clickable project cards
-  grid.addEventListener('keydown', (e) => {
-    const card = e.target.closest('.project-card');
-    if (!card) return;
-    if (e.key !== 'Enter' && e.key !== ' ') return;
-    e.preventDefault();
-    const slug = card.getAttribute('data-slug');
-    if (!slug) return;
-    const pr = getProjectBySlug(slug);
-    if (!pr) return;
-    history.pushState({}, '', `?id=${slug}`);
-    showDetail(pr);
-  });
-
-  // --- Details routing via ?id=slug
-  function getProjectBySlug(slug){ return projects.find(p=>p.slug===slug); }
-  const params = new URLSearchParams(location.search);
-  const qid = params.get('id');
-  if(qid){
-    const pr = getProjectBySlug(qid);
-    if(pr){ showDetail(pr); }
-  }
-  document.getElementById('backToProjects').addEventListener('click', () => {
-    history.pushState({}, '', location.pathname);
-    showList();
-  });
-  window.addEventListener('popstate', () => {
-    const sp = new URLSearchParams(location.search);
-    const sid = sp.get('id');
-    if(!sid){ showList(); } else {
-      const pr = getProjectBySlug(sid);
-      if(pr){ showDetail(pr); }
-    }
-  });
-
-  // Close overlay on backdrop click or ESC
-  detailSection.addEventListener('click', (e) => {
-    if (e.target === detailSection) {
-      history.pushState({}, '', location.pathname);
-      showList();
-    }
-  });
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !detailSection.hidden) {
-      history.pushState({}, '', location.pathname);
-      showList();
-    }
-  });
-
-  // --- Tabs
-  document.querySelectorAll('.toolbar .tab').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.toolbar .tab').forEach(b=>b.setAttribute('aria-selected','false'));
-      btn.setAttribute('aria-selected','true');
-      render(btn.dataset.filter);
-    });
-  });
-
-  // --- Utilities
-  document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <script src="js/main.js"></script>
 </body>
 </html>

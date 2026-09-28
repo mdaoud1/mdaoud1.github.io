@@ -250,6 +250,12 @@ h1, h2, h3 { line-height: 1.2; }
   box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
+  color: inherit;
+  text-decoration: none;
+}
+.project-card:hover {
+  border-color: var(--accent);
+  text-decoration: none;
 }
 
 .project-card .thumb {
@@ -290,6 +296,7 @@ h1, h2, h3 { line-height: 1.2; }
   margin-top: auto;
   font-weight: 600;
   font-size: 14px;
+  color: var(--accent);
 }
 
 /* ---------- Skills ---------- */

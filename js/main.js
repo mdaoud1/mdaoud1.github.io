@@ -9,18 +9,15 @@
     try {
       stored = localStorage.getItem(THEME_KEY);
     } catch (e) {
-      /* localStorage unavailable (private mode, blocked storage) — fall back to OS preference */
+      /* localStorage unavailable (private mode, blocked storage) — default below still applies */
     }
-    if (stored === "light" || stored === "dark") {
-      root.setAttribute("data-theme", stored);
-    }
+    // Site defaults to light mode regardless of OS preference; dark only applies
+    // once a visitor explicitly opts in via the toggle (and it's remembered from then on).
+    root.setAttribute("data-theme", stored === "dark" ? "dark" : "light");
   }
 
   function currentTheme() {
-    var explicit = root.getAttribute("data-theme");
-    if (explicit) return explicit;
-    var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-    return prefersDark ? "dark" : "light";
+    return root.getAttribute("data-theme") === "dark" ? "dark" : "light";
   }
 
   function toggleTheme() {

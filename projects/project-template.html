@@ -48,6 +48,11 @@
       <img class="hero-image" src="../assets/img/placeholder-project.svg" alt="[Describe the hero image]" />
     </header>
 
+    <!-- Standard layout: link buttons go right under the header, before Overview. -->
+    <div class="link-row">
+      <a class="btn" href="#" target="_blank" rel="noopener noreferrer">[GitHub Repository]</a>
+    </div>
+
     <div class="project-body">
       <h2>Overview</h2>
       <p>[2-4 sentences: what the project is and why it exists.]</p>
@@ -63,16 +68,19 @@
       </div>
 
       <h2>Gallery</h2>
+      <!--
+        For 2+ images of very different aspect ratios, group them into
+        .gallery-col wrappers (one column per side) instead of listing
+        <figure> directly, so a tall image doesn't leave a gap next to a
+        short one. One column can hold multiple stacked figures.
+      -->
       <div class="gallery">
-        <figure>
-          <img src="../assets/img/placeholder-project.svg" alt="[Describe image]" loading="lazy" />
-          <figcaption>[Caption]</figcaption>
-        </figure>
-      </div>
-
-      <h2>Links</h2>
-      <div class="link-row">
-        <a class="btn" href="#" target="_blank" rel="noopener noreferrer">[GitHub Repository]</a>
+        <div class="gallery-col">
+          <figure>
+            <img src="../assets/img/placeholder-project.svg" alt="[Describe image]" loading="lazy" />
+            <figcaption>[Caption]</figcaption>
+          </figure>
+        </div>
       </div>
     </div>
   </main>

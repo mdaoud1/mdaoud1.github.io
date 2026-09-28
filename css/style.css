@@ -192,6 +192,11 @@ h1, h2, h3 { line-height: 1.2; }
 }
 .btn-primary:hover { opacity: 0.92; }
 
+.nav-resume {
+  padding: 8px 14px;
+  font-size: 13.5px;
+}
+
 .hero-meta {
   display: flex;
   flex-wrap: wrap;

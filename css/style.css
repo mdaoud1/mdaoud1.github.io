@@ -264,6 +264,31 @@ h1, h2, h3 { line-height: 1.2; }
   object-fit: cover;
   background: var(--border);
   border-bottom: 1px solid var(--border);
+  display: block;
+}
+
+/* A wrapper around an image/thumb that overlays a status label on top of it,
+   e.g. "Under Construction" over a placeholder image. */
+.image-overlay-wrap {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.image-overlay-wrap .overlay-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 10, 14, 0.52);
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: clamp(13px, 2.4vw, 20px);
+  text-align: center;
+  padding: 0 12px;
+  pointer-events: none;
 }
 
 .project-card .body {
@@ -336,6 +361,12 @@ h1, h2, h3 { line-height: 1.2; }
   border: 1px solid var(--border);
   margin-bottom: 8px;
   background: var(--bg-raised);
+}
+.project-header .image-overlay-wrap {
+  margin-bottom: 8px;
+}
+.project-header .image-overlay-wrap .hero-image {
+  margin-bottom: 0;
 }
 .image-note {
   font-size: 12.5px;
